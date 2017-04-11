@@ -37,7 +37,7 @@ node {
 
   def img
   stage('Build') {
-    img = docker.build("814258403605.dkr.ecr.us-east-1.amazonaws.com/pointsource/roasts:${env.BUILD_NUMBER}")
+    img = docker.build("814258403605.dkr.ecr.us-east-1.amazonaws.com/pointsource/roasts:${env.BUILD_NUMBER}", '--dns 172.17.0.1')
   }
 
   // stage('Integration Test') {

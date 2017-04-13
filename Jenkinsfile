@@ -59,7 +59,7 @@ node {
 
   stage('Deploy') {
     withEnv(['DOCKER_HOST=tcp://mgr1.node.consul:2375']) {
-      sh "docker service create --name roasts-${env.BUILD_NUMBER} --network sfi -e SERVICE_NAME=roasts -e SERVICE_TAGS=${env.BUILD_NUMBER} 814258403605.dkr.ecr.us-east-1.amazonaws.com/pointsource/roasts:${env.BUILD_NUMBER}"
+      sh "docker service create --with-registry-auth --name roasts-${env.BUILD_NUMBER} --network sfi -e SERVICE_NAME=roasts -e SERVICE_TAGS=${env.BUILD_NUMBER} 814258403605.dkr.ecr.us-east-1.amazonaws.com/pointsource/roasts:${env.BUILD_NUMBER}"
     }
   }
 }

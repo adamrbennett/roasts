@@ -6,7 +6,7 @@ node {
     img = docker.build("pointsource/roasts:${env.BUILD_NUMBER}")
   }
 
-  docker.withRegistry('https://docker.io/', 'docker-registry-credentials') {
+  docker.withRegistry('https://registry.hub.docker.com/', 'docker-registry-credentials') {
     stage('Publish') {
       img.push()
       img.push('latest')
